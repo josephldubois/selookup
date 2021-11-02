@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Address" representedClassName="Address" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="addressPrefix" optional="YES" attributeType="String"/>
+        <attribute name="addressSuffix" optional="YES" attributeType="String"/>
+        <attribute name="apartment" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="business" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="community" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <attribute name="postalCode" optional="YES" attributeType="String"/>
+        <attribute name="street" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PhoneNumbers" representedClassName="PhoneNumbers" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <relationship name="parentStreetNumber" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TerritoryStreetNumbers" inverseName="phone" inverseEntity="TerritoryStreetNumbers"/>
+    </entity>
+    <entity name="Street" representedClassName="Street" syncable="YES" codeGenerationType="class">
+        <attribute name="community" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sort" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Territory" representedClassName="Territory" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="territoryStreets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TerritoryStreets" inverseName="parentyTerritory" inverseEntity="TerritoryStreets"/>
+    </entity>
+    <entity name="TerritoryStreetNumbers" representedClassName="TerritoryStreetNumbers" syncable="YES" codeGenerationType="class">
+        <attribute name="addressNumber" optional="YES" attributeType="String"/>
+        <attribute name="apartment" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="business" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="fullText" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phoneCheck" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="postalCode" optional="YES" attributeType="String"/>
+        <attribute name="prefix" optional="YES" attributeType="String"/>
+        <attribute name="suffix" optional="YES" attributeType="String"/>
+        <relationship name="parentStreet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TerritoryStreets" inverseName="streetNumbers" inverseEntity="TerritoryStreets"/>
+        <relationship name="phone" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PhoneNumbers" inverseName="parentStreetNumber" inverseEntity="PhoneNumbers"/>
+    </entity>
+    <entity name="TerritoryStreets" representedClassName="TerritoryStreets" syncable="YES" codeGenerationType="class">
+        <attribute name="community" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="parentyTerritory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Territory" inverseName="territoryStreets" inverseEntity="Territory"/>
+        <relationship name="streetNumbers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TerritoryStreetNumbers" inverseName="parentStreet" inverseEntity="TerritoryStreetNumbers"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-63" positionY="-18" width="128" height="194"/>
+        <element name="PhoneNumbers" positionX="228.1690673828125" positionY="379.19921875" width="128" height="88"/>
+        <element name="Street" positionX="-65.0982666015625" positionY="172.8707885742188" width="128" height="89"/>
+        <element name="Territory" positionX="135.0322265625" positionY="-6.63037109375" width="128" height="88"/>
+        <element name="TerritoryStreetNumbers" positionX="54.1097412109375" positionY="351.8674926757812" width="128" height="239"/>
+        <element name="TerritoryStreets" positionX="133.7494506835938" positionY="154.4189453125" width="128" height="118"/>
+    </elements>
+</model>

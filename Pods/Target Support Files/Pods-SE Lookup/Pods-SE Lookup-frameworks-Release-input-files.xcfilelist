@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-SE Lookup/Pods-SE Lookup-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework
+${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework
+${BUILT_PRODUCTS_DIR}/TipSee/TipSee.framework
+${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework
